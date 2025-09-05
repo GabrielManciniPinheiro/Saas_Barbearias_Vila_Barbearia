@@ -4,7 +4,7 @@ import { Button } from "./_components/ui/button"
 
 const Home = () => {
   const [] = useState()
-  return <Button>test</Button>
+  return <Button>Hello world!</Button>
 }
 
 export default Home
