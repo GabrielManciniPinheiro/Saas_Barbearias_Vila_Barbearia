@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { StarIcon } from "lucide-react"
+import Link from "next/link"
 
 interface BarbershopItemProps {
   barbershop: Barbershop
@@ -36,8 +37,8 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
           <h3 className="truncate font-semibold">{barbershop.name}</h3>{" "}
           {/*overflow-hidden text-ellipsis text-nowrap = truncate (nao exceder o limite da linha e trocar por ...)*/}
           <p className="truncate text-sm text-gray-400">{barbershop.address}</p>
-          <Button variant="secondary" className="mt-3 w-full">
-            Reservar
+          <Button variant="secondary" className="mt-3 w-full" asChild>
+            <Link href={`/barbershops/${barbershop.id}`}>Reservar</Link>
           </Button>
         </div>
       </CardContent>

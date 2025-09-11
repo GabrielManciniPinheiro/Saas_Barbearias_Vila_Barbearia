@@ -33,7 +33,7 @@ const Home = async () => {
         {/* INPUT DE BUSCA */}
         <div className="mt-6 flex items-center gap-2">
           <Input placeholder="Faça sua busca..." />
-          <Button className="bg-blue-700 text-white hover:bg-blue-600">
+          <Button className="bg-primary text-primary-foreground transition-transform hover:scale-95 hover:bg-blue-600">
             <SearchIcon />
           </Button>
         </div>
