@@ -100,47 +100,61 @@ async function seedDatabase() {
       },
     ]
 
-    // Criar 10 barbearias com nomes e endereços fictícios
+    // Criar ou atualizar 10 barbearias com nomes e endereços fictícios (troquei create )
+    // eslint-disable-next-line no-unused-vars
     const barbershops = []
     for (let i = 0; i < 10; i++) {
       const name = creativeNames[i]
       const address = addresses[i]
       const imageUrl = images[i]
 
-      const barbershop = await prisma.barbershop.create({
-        data: {
+      const barbershop = await prisma.barbershop.upsert({
+        where: { name }, // identifica a barbearia pelo nome
+        update: {
+          address,
+          imageURL: imageUrl,
+        },
+        create: {
           name,
           address,
           imageURL: imageUrl,
           phones: ["(11) 99999-9999", "(11) 99999-9999"],
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac augue ullamcorper, pharetra orci mollis, auctor tellus. Phasellus pharetra erat ac libero efficitur tempus. Donec pretium convallis iaculis. Etiam eu felis sollicitudin, cursus mi vitae, iaculis magna. Nam non erat neque. In hac habitasse platea dictumst. Pellentesque molestie accumsan tellus id laoreet.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac augue ullamcorper, pharetra orci mollis, auctor tellus.",
         },
       })
 
+      // Garantir que cada barbearia tenha os serviços
       for (const service of services) {
-        await prisma.barbershopService.create({
-          data: {
+        await prisma.barbershopService.upsert({
+          where: {
+            // combinação única: nome + barbershopId
+            name_barbershopId: {
+              name: service.name,
+              barbershopId: barbershop.id,
+            },
+          },
+          update: {
+            description: service.description,
+            price: service.price,
+            imageURL: service.imageUrl,
+          },
+          create: {
             name: service.name,
             description: service.description,
             price: service.price,
             barbershop: {
-              connect: {
-                id: barbershop.id,
-              },
+              connect: { id: barbershop.id },
             },
             imageURL: service.imageUrl,
           },
         })
       }
-
-      barbershops.push(barbershop)
     }
 
-    // Fechar a conexão com o banco de dados
     await prisma.$disconnect()
   } catch (error) {
-    console.error("Erro ao criar as barbearias:", error)
+    console.error("Erro ao criar/atualizar as barbearias:", error)
   }
 }
 

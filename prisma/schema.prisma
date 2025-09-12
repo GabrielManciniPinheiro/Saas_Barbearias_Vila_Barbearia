@@ -19,7 +19,7 @@ model User {
 
 model Barbershop {
   id          String              @id @default(uuid())
-  name        String
+  name        String              @unique
   address     String
   phones      String[]
   description String
@@ -39,7 +39,7 @@ model BarbershopService {
   //duration Int // duration in minutes
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
   bookings     Booking[]
-
+  @@unique([name, barbershopId])
   @@index([barbershopId])
 }
 
