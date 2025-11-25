@@ -1,0 +1,7 @@
+//Para rodar o código
+
+npm run dev
+
+//Para rodar o banco de dados prisma
+
+npx prisma studio
