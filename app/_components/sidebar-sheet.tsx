@@ -7,22 +7,14 @@ import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { quickSearchOptions } from "../_constants/search"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import Link from "next/link"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-  DialogHeader,
-} from "./ui/dialog"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGoogle } from "@fortawesome/free-brands-svg-icons"
-import { signIn, useSession } from "next-auth/react"
+import { Dialog, DialogTrigger } from "./ui/dialog"
+import { useSession } from "next-auth/react"
 import { signOut } from "next-auth/react"
+import SignInDialog from "./sign-in-dialog"
+import { DialogContent } from "./ui/dialog"
 
 const SidebarSheet = () => {
   const { data } = useSession()
-  const handleLoginWithGoogleClick = () => signIn("google")
   const handleLogoutClick = () => signOut()
 
   return (
@@ -45,7 +37,7 @@ const SidebarSheet = () => {
           </div>
         ) : (
           <>
-            <h2 className="text-lg font-bold">Olá, faça seu login!</h2>
+            <h2 className="font-bold">Olá, faça seu login!</h2>
             <Dialog>
               <DialogTrigger asChild>
                 <Button size="icon">
@@ -53,20 +45,7 @@ const SidebarSheet = () => {
                 </Button>
               </DialogTrigger>
               <DialogContent className="w-[90%]">
-                <DialogHeader>
-                  <DialogTitle>Faça login na plataforma</DialogTitle>
-                  <DialogDescription>
-                    Conecta-se usando sua conta do Google
-                  </DialogDescription>
-                </DialogHeader>
-                <Button
-                  variant="outline"
-                  className="gap-1 font-bold"
-                  onClick={handleLoginWithGoogleClick}
-                >
-                  <FontAwesomeIcon icon={faGoogle} />
-                  Google
-                </Button>
+                <SignInDialog />
               </DialogContent>
             </Dialog>
           </>
