@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
 import { db } from "../_lib/prisma"
 
 interface CreateBookingParams {
@@ -16,4 +17,5 @@ export const createBooking = async (params: CreateBookingParams) => {
       date: params.date,
     },
   })
+  revalidatePath("/barbershops/[id]")
 }
