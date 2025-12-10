@@ -27,53 +27,35 @@ async function seedDatabase() {
       "https://utfs.io/f/07842cfb-7b30-4fdc-accc-719618dfa1f2-17s.png",
       "https://utfs.io/f/0522fdaf-0357-4213-8f52-1d83c3dcb6cd-18e.png",
     ]
-    // Nomes criativos para as barbearias
-    const creativeNames = [
-      "Vila Barbearia",
-      "Kimono",
-      "FastScova",
-      "The Dapper Den",
-      "Cabelo & Cia.",
-      "Machado & Tesoura",
-      "Barbearia Elegance",
-      "Aparência Impecável",
-      "Estilo Urbano",
-      "Estilo Clássico",
-    ]
+    // Nomes dos profissionais
+    const creativeNames = ["Cosme", "Léo", "Alan"]
 
-    // Endereços fictícios para as barbearias
+    // Endereços  barbearias
     const addresses = [
-      "Rua da Barbearia, 123",
-      "Avenida dos Cortes, 456",
-      "Praça da Barba, 789",
-      "Travessa da Navalha, 101",
-      "Alameda dos Estilos, 202",
-      "Estrada do Machado, 303",
-      "Avenida Elegante, 404",
-      "Praça da Aparência, 505",
-      "Rua Urbana, 606",
-      "Avenida Clássica, 707",
+      "Rua Dona Matilde, 714",
+      "Rua Dona Matilde, 714",
+      "Rua Dona Matilde, 714",
     ]
 
     const services = [
       {
         name: "Corte de Cabelo",
         description: "Estilo personalizado com as últimas tendências.",
-        price: 60.0,
+        price: 45.0,
         imageUrl:
           "https://utfs.io/f/0ddfbd26-a424-43a0-aaf3-c3f1dc6be6d1-1kgxo7.png",
       },
       {
         name: "Barba",
         description: "Modelagem completa para destacar sua masculinidade.",
-        price: 40.0,
+        price: 35.0,
         imageUrl:
           "https://utfs.io/f/e6bdffb6-24a9-455b-aba3-903c2c2b5bde-1jo6tu.png",
       },
       {
         name: "Pézinho",
         description: "Acabamento perfeito para um visual renovado.",
-        price: 35.0,
+        price: 25.0,
         imageUrl:
           "https://utfs.io/f/8a457cda-f768-411d-a737-cdb23ca6b9b5-b3pegf.png",
       },
@@ -85,9 +67,9 @@ async function seedDatabase() {
           "https://utfs.io/f/2118f76e-89e4-43e6-87c9-8f157500c333-b0ps0b.png",
       },
       {
-        name: "Massagem",
-        description: "Relaxe com uma massagem revigorante.",
-        price: 50.0,
+        name: "Relaxamento",
+        description: "Relaxamento revigorante.",
+        price: 30.0,
         imageUrl:
           "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png",
       },
