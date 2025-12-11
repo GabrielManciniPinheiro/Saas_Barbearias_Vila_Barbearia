@@ -7,13 +7,14 @@ import Image from "next/image"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import { quickSearchOptions } from "./_constants/search"
-import BookingItem from "./_components/booking-item"
+//import BookingItem from "./_components/booking-item"
 import Search from "./_components/search"
 import Link from "next/link"
 import { getServerSession } from "next-auth"
 import { authOptions } from "./_lib/auth"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
+import BookingCarousel from "./_components/carousel"
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
@@ -93,17 +94,13 @@ const Home = async () => {
           />
         </div>
 
-        <h2 className="mb-3 ml-2 mt-6 text-xs font-bold uppercase text-gray-400">
-          Agendamentos
-        </h2>
         {/* Agendamento */}
-        <div className="mt-6 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {confirmedBookings.map((booking) => (
-            <div className="mr-4 min-w-[360px]" key={booking.id}>
-              <BookingItem booking={booking} />
-            </div>
-          ))}
-        </div>
+
+        {confirmedBookings.length > 0 && (
+          <div className="mt-6">
+            <BookingCarousel bookings={confirmedBookings} />
+          </div>
+        )}
 
         {/* Lista de barbearias */}
         <h2 className="mb-3 ml-2 mt-6 text-xs font-bold uppercase text-gray-400">
