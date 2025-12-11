@@ -17,6 +17,8 @@ export const authOptions: AuthOptions = {
       session.user = {
         ...session.user,
         id: user.id,
+        //@ts-ignore
+        role: user.role,
       } as any
       return session
     },
