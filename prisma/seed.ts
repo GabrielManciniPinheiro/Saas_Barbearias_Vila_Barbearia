@@ -85,7 +85,7 @@ async function seedDatabase() {
         description: "Cabelos lisos e sedosos por mais tempo.",
         price: 75.0,
         imageUrl:
-          "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png",
+          "https://utfs.io/f/2118f76e-89e4-43e6-87c9-8f157500c333-b0ps0b.png",
       },
       {
         name: "Platinado",
