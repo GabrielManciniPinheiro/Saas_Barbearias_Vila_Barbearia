@@ -16,6 +16,8 @@ import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import BookingCarousel from "./_components/carousel"
 import { getConfirmedBookings } from "./_data/get-confirmed-bookings"
+import HorizontalScroll from "./_components/ui/horizontal-scroll"
+import PromoBanner from "./_components/banner"
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
@@ -67,12 +69,10 @@ const Home = async () => {
         </div>
 
         {/* BANNER IMAGEM */}
-        <div className="relative mt-6 h-[150px] w-full">
-          <Image
+        <div className="mt-6 px-5">
+          <PromoBanner
             src="/banner-01.png"
             alt="Agende seu atendimento no melhor: Vila Barbearia!"
-            fill
-            className="rounded-xl object-cover"
           />
         </div>
 
@@ -89,9 +89,11 @@ const Home = async () => {
           Escolha o seu profissional :
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
-            <BarbershopItem barbershop={barbershop} key={barbershop.id} />
-          ))}
+          <HorizontalScroll>
+            {barbershops.map((barbershop) => (
+              <BarbershopItem barbershop={barbershop} key={barbershop.id} />
+            ))}
+          </HorizontalScroll>
         </div>
 
         {/* Lista de barbearias populares */}
@@ -99,9 +101,11 @@ const Home = async () => {
           Populares
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {popularBarbershops.map((barbershop) => (
-            <BarbershopItem barbershop={barbershop} key={barbershop.id} />
-          ))}
+          <HorizontalScroll>
+            {popularBarbershops.map((barbershop) => (
+              <BarbershopItem barbershop={barbershop} key={barbershop.id} />
+            ))}
+          </HorizontalScroll>
         </div>
       </div>
     </div>

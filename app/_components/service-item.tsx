@@ -21,6 +21,7 @@ import SignInDialog from "./sign-in-dialog"
 import { isPast } from "date-fns"
 import { useMemo } from "react"
 import BookingSummary from "./booking-summary"
+import HorizontalScroll from "./ui/horizontal-scroll"
 
 interface ServiceItemProps {
   service: BarbershopService
@@ -233,23 +234,24 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                   </div>
 
                   {selectedDay && (
-                    <div className="flex gap-3 overflow-x-auto border-b border-solid p-5 [&::-webkit-scrollbar]:hidden">
+                    <div className="border-b border-solid p-5">
                       {timeList.length > 0 ? (
-                        timeList.map((time) => (
-                          <Button
-                            key={time}
-                            variant={
-                              selectedTime === time ? "default" : "outline"
-                            }
-                            className="rounded-full"
-                            onClick={() => handleTimeSelect(time)}
-                          >
-                            {time}
-                          </Button>
-                        ))
+                        <HorizontalScroll showArrowsOnMobile={true}>
+                          {timeList.map((time) => (
+                            <Button
+                              key={time}
+                              variant={
+                                selectedTime === time ? "default" : "outline"
+                              }
+                              className="rounded-full"
+                              onClick={() => handleTimeSelect(time)}
+                            >
+                              {time}
+                            </Button>
+                          ))}
+                        </HorizontalScroll>
                       ) : (
                         <p className="text-xs">
-                          {" "}
                           Não há horários disponíveis para esta data.
                         </p>
                       )}

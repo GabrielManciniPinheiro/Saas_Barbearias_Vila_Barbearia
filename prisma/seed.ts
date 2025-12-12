@@ -45,6 +45,12 @@ async function seedDatabase() {
       "Rua Dona Matilde, 714",
     ]
 
+    const phones = [
+      ["(11) 98065-2551", "(11) 98065-2551"],
+      ["(11) 97866-9750", "(11) 97866-9750"],
+      ["(11) 98529-9398", "(11) 98529-9398"],
+    ]
+
     const services = [
       {
         name: "Corte de Cabelo",
@@ -123,7 +129,7 @@ async function seedDatabase() {
           name,
           address,
           imageURL: imageUrl,
-          phones: ["(11) 99999-9999", "(11) 99999-9999"],
+          phones: phones[i],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac augue ullamcorper, pharetra orci mollis, auctor tellus.",
         },
