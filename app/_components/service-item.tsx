@@ -135,7 +135,14 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
         date: selectedDate,
       })
       handleBookingSheetOpenChange()
-      toast.success("Reserva criada com sucesso!")
+      toast.success("Reserva criada com sucesso!", {
+        action: {
+          label: "Ver agendamentos",
+          onClick: () => {
+            window.location.href = "/bookings"
+          },
+        },
+      })
     } catch (error) {
       console.error(error)
       toast.error("Erro ao criar reserva.")
