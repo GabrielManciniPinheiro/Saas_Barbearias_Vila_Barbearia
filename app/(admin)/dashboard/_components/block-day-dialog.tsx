@@ -77,7 +77,7 @@ const BlockDayDialog = ({ barbershops }: BlockDayDialogProps) => {
           className="w-full gap-2 font-bold md:w-auto"
         >
           <Ban size={18} />
-          Bloquear Dia
+          Bloquear Agenda
         </Button>
       </DialogTrigger>
 
@@ -87,8 +87,9 @@ const BlockDayDialog = ({ barbershops }: BlockDayDialogProps) => {
         </DialogHeader>
 
         <div className="space-y-4 py-4">
-          <p className="rounded bg-red-50 p-2 text-xs text-red-500">
-            Isso criará agendamentos em todos os horários livres deste dia.
+          <p className="text-ms rounded p-2 text-red-500">
+            Esta ação criará agendamentos em todos os horários livres deste dia
+            para que eles não fiquem disponíveis para marcação.
           </p>
 
           {/* Seletor de Barbeiro */}
